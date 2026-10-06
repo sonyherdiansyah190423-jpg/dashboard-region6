@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dashboard Regional 6 Mitra10</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="toast" class="toast"></div>
+<dialog id="dlg"><p>Apakah Anda yakin ingin menghapus seluruh data?</p><div class="row end"><button class="btn ghost" id="dlgNo">Batal</button><button class="btn danger" id="dlgYes">Reset</button></div></dialog>
+<main class="wrap">
+<header class="card hero">
+  <div><h1>Dashboard Regional 6 Mitra10</h1><p>Rekapitulasi Otomatis Laporan WA Pertoko &amp; Konsolidasi Excel</p></div>
+  <div class="row">
+    <label>Tanggal<input type="date" id="date"><small id="dateLbl"></small></label>
+    <label>Pukul / Jam<input type="time" id="time"></label>
+    <button class="btn primary" id="btnCalc">HITUNG REKAP</button>
+    <button class="btn ghost" id="btnTheme" title="Dark/light">◐</button>
+  </div>
+  <div id="status" class="status"></div>
+</header>
+
+<div id="capture">
+<section class="card">
+  <h2>Tabel Cek &amp; Edit Data</h2>
+  <p class="muted">Nilai diambil otomatis dari paste WA. Jika ada yang salah, edit langsung di sini — Output Laporan akan ikut ter-update.</p>
+  <div class="scroll"><table id="editTable"></table></div>
+</section>
+<section class="card">
+  <h2>Output Laporan Region 6</h2>
+  <pre id="output" class="out">Belum ada data.</pre>
+  <div class="row" data-nocap><button class="btn primary" id="btnCopy">COPY TEKS KIRIM WA</button><button class="btn ghost" id="btnPng">DOWNLOAD PNG</button></div>
+</section>
+</div>
+
+<section class="card">
+  <div class="row between"><h2>Input Text WA Toko (9 Store)</h2><button class="btn danger" id="btnReset">RESET SEMUA</button></div>
+  <div id="wa" class="grid"></div>
+</section>
+
+<section class="card">
+  <h2>Konsolidasi 9 File Excel Toko Region 6</h2>
+  <p class="muted">Pilih atau drop 9 file Excel laporan masing-masing toko untuk digabungkan ke dalam 1 file Master Excel.</p>
+  <div id="drop" class="drop" tabindex="0">Klik atau drop file di sini (.xlsx, .xls, .csv — maks. 9 file)</div>
+  <input type="file" id="file" multiple accept=".xlsx,.xls,.csv" hidden>
+  <div class="bar"><i id="bar"></i></div>
+  <ul id="fileList" class="files"></ul>
+  <div id="xStatus" class="status"></div>
+  <div class="row"><button class="btn primary" id="btnXlsx">DOWNLOAD MASTER EXCEL GABUNGAN</button><button class="btn ghost" id="btnClearX">Clear</button></div>
+</section>
+
+<section class="card">
+  <h2>Preview Tabel Hasil Konsolidasi</h2>
+  <div class="row"><input type="search" id="q" placeholder="Cari data..."><select id="fStore"><option value="">Semua toko</option></select><span id="count" class="muted"></span></div>
+  <div class="scroll tall"><table id="prev"></table></div>
+  <div class="row center"><button class="btn ghost" id="pPrev">‹</button><span id="pInfo"></span><button class="btn ghost" id="pNext">›</button></div>
+</section>
+</main>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
